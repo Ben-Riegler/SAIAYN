@@ -251,7 +251,7 @@ class SeqBO():
                 ac = LogExpectedImprovement(self.gp, self.y_best)
 
             elif self.acqf == "seqUCB":
-                ac = UpperConfidenceBound(self.gp, beta = 4) 
+                ac = UpperConfidenceBound(self.gp, beta = 2) 
 
             elif self.acqf == "seqTh":
                 ac = PosteriorSample(self.gp)
@@ -358,7 +358,7 @@ class SyncBO(SeqBO):
             ac = qLogExpectedImprovement(self.gp, self.y_best)
 
         elif self.acqf == "qUCB":
-            ac = qUpperConfidenceBound(self.gp, beta = 4) 
+            ac = qUpperConfidenceBound(self.gp, beta = 2) 
 
         elif self.acqf == "RS":
             ac = "RS"
@@ -495,7 +495,7 @@ class AsyncBO(SeqBO):
             ac = LogExpectedImprovement(self.gp, self.y_best)
 
         elif self.acqf == "UCB":
-            ac = UpperConfidenceBound(self.gp, beta = 4)
+            ac = UpperConfidenceBound(self.gp, beta = 2)
         
         elif self.acqf == "Th":
             ac = PosteriorSample(self.gp)
@@ -506,7 +506,7 @@ class AsyncBO(SeqBO):
 
         elif self.acqf == "LP-UCB":
             ac = PenalizedUpperConfidenceBound(self.gp,
-                                                beta = 4,
+                                                beta = 2,
                                                 bounds = self.bounds,
                                                 busy=self.busys,
                                                 y_max=self.y_best,
@@ -515,7 +515,7 @@ class AsyncBO(SeqBO):
         
         elif self.acqf == "LLP-UCB":
             ac = PenalizedUpperConfidenceBound(self.gp,
-                                                beta = 4,
+                                                beta = 2,
                                                 bounds = self.bounds,
                                                 busy=self.busys,
                                                 y_max=self.y_best,
